@@ -38,8 +38,8 @@ public class SecurityConfig {
 
 //        ClientRegistration cr = ClientRegistration
 //                .withRegistrationId("github") //등록 ID 설정
-//                .clientId("f2812dbc5e867ec55ed0") //Github OAuth 애플리케이션의 클라이언트 ID 설정
-//                .clientSecret("326e49aca1654278d5a815eb52118f07a3ccb463") //Github OAuth 애플리케이션의 클라이언트 시크릿 설정
+//                .clientId("") //Github OAuth 애플리케이션의 클라이언트 ID 설정
+//                .clientSecret("") //Github OAuth 애플리케이션의 클라이언트 시크릿 설정
 //                .scope(new String[]{"read:user"}) //요청할 권한 범위 설정
 //                .authorizationUri("https://github.com/login/oauth/authorize") //Github OAuth 인증 엔드포인트 URI 설정
 //                .tokenUri("https://api.github.com/user") //엑세스 토큰 검색을 위한 Github OAuth 토큰 엔드포인트 URI 설정
@@ -52,8 +52,8 @@ public class SecurityConfig {
         //시큐리티에서 oauth 2 인증 공급자 설정을 간편하게 할 수 있는 클래스 제공한다. 공급자가 없다면 위와 같이 정의해야 한다.
         return CommonOAuth2Provider.GITHUB
                 .getBuilder("github")
-                .clientId("f2812dbc5e867ec55ed0")
-                .clientSecret("326e49aca1654278d5a815eb52118f07a3ccb463")
+                .clientId("")
+                .clientSecret("")
                 .build();
     }
 
