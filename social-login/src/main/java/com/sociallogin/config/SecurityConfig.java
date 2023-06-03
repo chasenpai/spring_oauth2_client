@@ -18,12 +18,17 @@ public class SecurityConfig {
         http.csrf(
                 csrf -> csrf.disable()
         );
-        http.authorizeHttpRequests(
-                authorizeHttpRequests -> authorizeHttpRequests.anyRequest().authenticated()
-        );
-        http.oauth2Login(
-                oauth2 -> oauth2.userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint.userService(socialUserService))
-        );
+        http.authorizeHttpRequests(authorizeHttpRequests -> {
+            authorizeHttpRequests.requestMatchers("/social-login").permitAll();
+            authorizeHttpRequests.anyRequest().authenticated();
+        });
+        //oauth2 로그인 설정
+        http.oauth2Login(oauth2 -> {
+                    oauth2.loginPage("/social-login")
+                            .defaultSuccessUrl("/social-user")
+                            //사용자 정보 엔드포인트 구성
+                            .userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint.userService(socialUserService));
+        });
         return http.build();
     }
 
